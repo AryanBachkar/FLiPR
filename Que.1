@@ -1,0 +1,95 @@
+import java.util.UUID;
+
+public class PurchaseOrderAPI {
+
+    public static void main(String[] args) {
+        // Create a new purchase order
+        PurchaseOrder purchaseOrder = createPurchaseOrder("Product A", 10, 9.99, 12.99, "Customer123");
+
+        // Print the details of the purchase order
+        System.out.println("Product Name: " + purchaseOrder.getProductName());
+        System.out.println("Quantity: " + purchaseOrder.getQuantity());
+        System.out.println("Pricing: " + purchaseOrder.getPricing());
+        System.out.println("MRP: " + purchaseOrder.getMrp());
+        System.out.println("Purchase Order ID: " + purchaseOrder.getPurchaseOrderId());
+        System.out.println("Customer ID: " + purchaseOrder.getCustomerId());
+    }
+
+    public static PurchaseOrder createPurchaseOrder(String productName, int quantity, double pricing, double mrp, String customerId) {
+        // Generate a unique purchase order ID
+        String purchaseOrderId = generatePurchaseOrderId();
+
+        // Create a new PurchaseOrder object
+        PurchaseOrder purchaseOrder = new PurchaseOrder();
+        purchaseOrder.setProductName(productName);
+        purchaseOrder.setQuantity(quantity);
+        purchaseOrder.setPricing(pricing);
+        purchaseOrder.setMrp(mrp);
+        purchaseOrder.setPurchaseOrderId(purchaseOrderId);
+        purchaseOrder.setCustomerId(customerId);
+
+        return purchaseOrder;
+    }
+
+    public static String generatePurchaseOrderId() {
+        // Generate a unique ID using UUID
+        return UUID.randomUUID().toString();
+    }
+}
+
+class PurchaseOrder {
+    private String productName;
+    private int quantity;
+    private double pricing;
+    private double mrp;
+    private String purchaseOrderId;
+    private String customerId;
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public double getPricing() {
+        return pricing;
+    }
+
+    public void setPricing(double pricing) {
+        this.pricing = pricing;
+    }
+
+    public double getMrp() {
+        return mrp;
+    }
+
+    public void setMrp(double mrp) {
+        this.mrp = mrp;
+    }
+
+    public String getPurchaseOrderId() {
+        return purchaseOrderId;
+    }
+
+    public void setPurchaseOrderId(String purchaseOrderId) {
+        this.purchaseOrderId = purchaseOrderId;
+    }
+
+    public String getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
+    }
+}
